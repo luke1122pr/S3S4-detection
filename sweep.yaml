@@ -1,0 +1,54 @@
+description: hyperparameter search for abnormal detection
+
+# Training script to run
+program: abnormal_detection/train_wavelet.py
+
+# Method can be bayes, random, grid
+method: bayes
+
+# Metric to optimize
+metric:
+  name: best_val_loss
+  goal: minimize
+
+# Should we early terminate runs
+early_terminate:
+  type: hyperband
+
+# Parameters to search over
+parameters:
+  sincconv_filter_length: 
+      values: [121, 144, 100]
+  sincconv_nfilters: 
+      values: [16, 32, 64]
+  branch_nlayers:
+      values: [1, 2, 3, 4, 5]
+  ekg_kernel_length':
+      values: [5, 7, 13, 21, 35]
+  hs_kernel_length:
+      values: [5, 7, 13, 21, 35]
+  wavelet_scale_length:
+      values: [7, 13, 21, 25, 35]
+  ekg_nfilters:
+      values: [1, 2, 4, 8, 16, 32]
+  hs_nfilters:
+      values: [1, 2, 4, 8, 16, 32]
+  final_nlayers:
+      values: [3, 4, 5, 6]
+  final_kernel_length:
+      values: [5, 7, 13, 21, 35]
+  final_nonlocal_nlayers:
+      values: [0]
+  final_nfilters:
+      values: [8, 16, 32]
+
+  kernel_initializer:
+      values: ['glorot_uniform', 'he_normal']
+
+  skip_connection:
+      values: [True, False]
+  crop_center:
+      values: [True, False]
+
+  remove_dirty:
+      values: [2]
