@@ -3,6 +3,7 @@ source:big_exam
 #:634
 
 | method  | channel  | time | val_loss | test_acc |
+| :------------ |:---------------:| -----:|-----:|-----:|
 | wavelet | hs1+hs2  | 0-10s| 0.6148   | 0.6492 |
 | HHT      | hs1+hs2 | 2-8s | 0.603    | 0.6190 |
 | HHT      | hs1+hs2 | 0-10s | 0.6037  | 0.6666 |
